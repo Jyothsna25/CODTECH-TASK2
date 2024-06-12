@@ -1,0 +1,49 @@
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/gradeServlet")
+public class gradeServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Retrieve the marks from the form
+        int english = Integer.parseInt(request.getParameter("english"));
+        int telugu = Integer.parseInt(request.getParameter("telugu"));
+        int maths = Integer.parseInt(request.getParameter("maths"));
+        int science = Integer.parseInt(request.getParameter("science"));
+        int social = Integer.parseInt(request.getParameter("social"));
+
+        // Calculate the average
+        double average = (english + telugu + maths + science + social) / 5.0;
+
+        // Determine the grade
+        String grade;
+        if (average >= 90) {
+            grade = "A";
+        } else if (average >= 80) {
+            grade = "B";
+        } else if (average >= 70) {
+            grade = "C";
+        } else if (average >= 60) {
+            grade = "D";
+        } else {
+            grade = "F";
+        }
+
+        // Set response content type
+        response.setContentType("text/html");
+
+        // Write the response
+        PrintWriter out = response.getWriter();
+        out.println("<html><body>");
+        out.println("<h1>Student Grade Tracker</h1>");
+        out.println("<p>Average Marks: " + average + "</p>");
+        out.println("<p>Grade: " + grade + "</p>");
+        out.println("</body></html>");
+    }
+}
