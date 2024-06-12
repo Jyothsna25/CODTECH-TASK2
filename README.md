@@ -8,6 +8,8 @@
 ## Overview of the Project
 
 ### Project:Student Grade Tracker
+![Screenshot (79)](https://github.com/Jyothsna25/CODTECH-TASK-2/assets/160406602/6d808425-513b-4ed9-bfec-063c5dfb7da0)
+
 
 ### **Objective:**
 To implement a system that efficiently processes student marks and
